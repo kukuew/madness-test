@@ -82,7 +82,7 @@ function moveItems(direction) {
 
   const getNextIndex = (i) => (i - MOVE_STEP + meshes.length) % meshes.length + 1
   const getPrevIndex = (i) => (i + 1 + MOVE_STEP) % meshes.length
-  const getIndex = direction === 'RIGHT' ? getNextIndex : getPrevIndex
+  const getIndex = direction === 'LEFT' ? getNextIndex : getPrevIndex
   const timeline = gsap.timeline()
 
   timeline.eventCallback('onStart', () => {
@@ -105,8 +105,8 @@ function moveItems(direction) {
 
   timeline.play()
 
-  const resetFromIndex = direction === 'RIGHT' ? 0 : -1
-  const resetToIndex = direction === 'RIGHT' ? -1 : 0
+  const resetFromIndex = direction === 'LEFT' ? 0 : -1
+  const resetToIndex = direction === 'LEFT' ? -1 : 0
   for (let j = 0; MOVE_STEP > j; j++) {
     meshes = arrayMoveImmutable(meshes, resetFromIndex, resetToIndex)
   }
